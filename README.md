@@ -4,3 +4,4 @@
 `VSCode`、`Atom`等知名软件便是基于`Electron`开发的。
 
 * [Electron官网](https://electron.atom.io/)
+* [Electron Awesome](https://github.com/sindresorhus/awesome-electron)
