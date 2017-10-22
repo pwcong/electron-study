@@ -1,0 +1,27 @@
+{
+  "name": "electron-study",
+  "version": "1.0.0",
+  "description": "Electron 全平台桌面应用开发入门 Demo",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron ./windows/create-frameless-window/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pwcong/electron-study.git"
+  },
+  "keywords": [
+    "Electron-Study",
+    "Electron-Demo"
+  ],
+  "author": "Pwcong <pwcong@foxmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pwcong/electron-study/issues"
+  },
+  "homepage": "https://github.com/pwcong/electron-study#readme",
+  "dependencies": {
+    "electron": "^1.7.9"
+  }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Electron Study - Manage window state</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Hello World</h1>
+
+        <button type="button" onclick="createNewWindow()">Create new window</button>
+
+        <button type="button" onclick="closeThisWindow()">Close this window</button>
+
+        <p id="windowStateDisplayer"></p>
+
+    </div>
+
+    <script>
+        const remote = require('electron').remote;
+        const BrowserWindow = remote.BrowserWindow;
+        const path = require('path');
+
+        let win;
+        let windowStateDisplayer = document.getElementById('windowStateDisplayer');
+
+        function createNewWindow() {
+
+            if (win) {
+                return;
+            }
+
+            let windowPath = path.join('file://', __dirname, 'new.html');
+
+            win = new BrowserWindow({
+                width: 400,
+                height: 320
+            });
+
+            win.on('close', function () {
+                win = null;
+            });
+            win.on('resize', updateReply)
+            win.on('move', updateReply)
+
+            win.loadURL(windowPath);
+            win.show();
+
+            function updateReply() {
+                let windowState = `Size: ${win.getSize()} Position: ${win.getPosition()}`;
+                windowStateDisplayer.innerText = windowState;
+            }
+
+        }
+
+        function closeThisWindow() {
+
+            remote.getCurrentWindow().close();
+
+        }
+    </script>
+
+
+</body>
+
+</html>

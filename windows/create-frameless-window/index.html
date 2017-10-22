@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Electron Study - Create a frameless window</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Hello World</h1>
+
+        <button type="button" onclick="createNewWindow()">Create new window</button>
+
+        <button type="button" onclick="closeThisWindow()">Close this window</button>
+
+
+    </div>
+
+    <script>
+        const remote = require('electron').remote;
+        const BrowserWindow = remote.BrowserWindow;
+        const path = require('path');
+
+        function createNewWindow() {
+
+            let windowPath = path.join('file://', __dirname, 'new.html');
+
+            let win = new BrowserWindow({
+                width: 400,
+                height: 320,
+                frame: false,
+                // transparent: true,
+            });
+
+            win.on('close', function () {
+                win = null;
+            });
+
+            win.loadURL(windowPath);
+            win.show();
+        }
+
+        function closeThisWindow() {
+
+            remote.getCurrentWindow().close();
+
+        }
+    </script>
+
+
+</body>
+
+</html>
