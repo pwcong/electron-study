@@ -4,8 +4,7 @@
   "description": "Electron 全平台桌面应用开发入门 Demo",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "dev": "electron ./windows/create-frameless-window/main.js"
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
